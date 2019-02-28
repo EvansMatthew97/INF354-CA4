@@ -6,5 +6,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'INF354CA3';
+  public appTitle: string = 'INF 354 CA4';
+  public links: Array<{
+    title: string;
+    href: string;
+  }> = [
+    {
+      title: 'Home',
+      href: '/',
+    },
+    {
+      title: 'About',
+      href: '/about',
+    },
+    {
+      title: 'Contact Us',
+      href: '/contact',
+    },
+  ];
 }
