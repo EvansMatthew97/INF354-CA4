@@ -1,0 +1,12 @@
+<header>
+  <div class="container">
+    <a routerLink="/" class="logo">{{ appTitle }}</a>
+    <nav>
+      <ul>
+        <li *ngFor="let link of links">
+          <a [routerLink]="link.href">{{ link.title }}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,7 @@
+<h1 [ngStyle]="{
+  'color': h1Style ? 'grey' : 'black'
+}" [class.large]="h1Style">Home</h1>
+
+<button (click)="firstClick()">
+  {{ h1Style ? 'Make smaller' : 'Make larger' }}
+</button>
