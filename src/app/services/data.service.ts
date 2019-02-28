@@ -5,26 +5,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-
-  private apiUrl = 'https://reqres.in/api/users';
-
   constructor(
     private http: HttpClient
   ) { }
 
   async getUsers(): Promise<User[]> {
-    const res = await this.http.get(this.apiUrl).toPromise();
-    const numPages = (res as any).total_pages;
+    const res = await this.http.get('https://reqres.in/api/users?per_page=12').toPromise();
 
-    const users: User[] = [];
-
-    await Promise.all(new Array(numPages).fill(undefined).map(async (page, index) => new Promise(async (resolve, reject) => {
-      console.log(index)
-      const res = await this.http.get(`${this.apiUrl}?page=${index + 1}`).toPromise();
-      users.push(...(res as any).data);
-      resolve();
-    })));
-
+    const users: User[] = (res as any).data;
     return users.sort((a, b) => {
       const surnameDiff = a.last_name == b.last_name ? 0 : a.last_name > b.last_name ? 1 : -1;
       if (surnameDiff != 0) return surnameDiff;
